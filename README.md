@@ -2,6 +2,14 @@
 
 ## 개발 환경 통일
 
+### 기본 라이브러리 설치
+
+- mysql 라이브러리
+```bash
+apt-get update
+apt-get install python3-dev libmysqlclient-dev gcc
+```
+
 ### Python
 ---
 #### Python version
@@ -44,16 +52,26 @@ pip freeze > requirements.txt
 # requirements 설치하기 (가상환경 activate 상태라고 가정)
 pip install -r requirements.txt
 ```
+
+#### django version
+- 장고 버전 확인
+
+```bash
+$ python -m django --version # (가상환경 activate 상태라고 가정)
+4.0.6
+```
+
 ---
 #### Linter
 
+* vscode 사용 안하면 설정 할 필요 없음
 - flake8
 
 ```bash
 pip3 install flake8
 ```
 
-1. command + sift + p 누른 후 **Python: Select Linter** 선택
+1. (MAC) command + sift + p, (win) ctrl + sift + p 누른 후 **Python: Select Linter** 선택
 
 2. **flake8** 선택
 
@@ -67,7 +85,7 @@ pip3 install flake8
 ```
 ---
 #### Formatter
-
+* vscode 사용 안하면 설정할 필요 없음.
 - black
 
 ```bash
@@ -82,59 +100,68 @@ pip3 install black
 ```
 
 ---
-#### Django
-- 장고 설치
-
-```bash
-pip install django
-```
-
-- 장고 버전 확인
-
-```python
-$ python -m django --version
-4.0.6
-```
-
----
 #### pip3 오류 발생 시
 
 ```bash
 sudo apt install python3-pip
 ```
 
-### Docker / Docker-compose
 
----
-
-#### Docker 설치 (Ubuntu 기준)
-
-**root 계정이 아닌 user 계정에서 작업할 것**
+### 환경 설정
+ 
+#### .env
+- .env 파일 생성
+* **manage.py** 파일 위치에서 실행
 
 ```bash
-sudo apt update
-sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository \
-"deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-$(lsb_release -cs) \
-stable"
-sudo apt update && sudo apt install docker-ce docker-ce-cli containerd.io -y
-sudo docker -v
-sudo systemctl enable docker
-sudo systemctl status docker
-
-sudo usermod -aG docker $USER
+touch .env
 ```
 
-#### Docker-compose 설치
+- .env 파일 양식
+1. 아래 내용 **.env** 파일로 복사
 
-**root 계정이 아닌 user 계정에서 작업할 것**<br>
-**docker를 먼저 설치하고 docker-compose 설치할 것**
+```
+# django SECRET_KEY
+SECRET_KEY="your_django_secret_key" # 장고 settings.py 참고
+
+# django DEBUG
+DEBUG=True
+
+# ALLOWED_HOSTS
+TEST_HOST='your_test_host'
+
+# DB settings
+DATABASE_NAME=culture_circle
+DATABASE_USER='database_user'
+DATABASE_PASSWORD='database_password'
+DATABASE_HOST='database_host' # ex) localhost
+DATABASE_PORT='database_port'
+```
+2. 각 key 값에 해당하는 value 값 작성
+
+* key=value 에서 공백이 들어가면 안됨.
+
+#### mysql
+- mysql 설치
 
 ```bash
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-sudo docker-compose -version
+# apt 업데이트
+apt update
+
+# mysql server 설치
+sudo apt install -y mysql-server
+
+# 서버 초기화
+sudo mysql_secure_installation
+
+```
+- database 생성
+
+```bash
+mysql -u {USER} -p < createtable.sql
+python manage.py migrate
+
+# e.g.
+mysql -u root -p < createtabel.sql
+python manage.py migrate
 ```
