@@ -1,0 +1,1 @@
+CREATE DATABASE culture_circle CHARACTER SET utf8;
