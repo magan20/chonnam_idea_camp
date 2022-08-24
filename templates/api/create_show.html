@@ -1,0 +1,38 @@
+<form action="{% url 'show_create' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="title">title: </label>
+  <input id="title" type="text" name="title">
+  <br>
+  <label for="link">link: </label>
+  <input id="link" type="text" name="link">
+  <br>
+  <label for="category">category: </label>
+  <input id="category" type="text" name="category">
+  <br>
+  <label for="region">region: </label>
+  <input id="region" type="text" name="region">
+  <br>
+  <label for="start_date">start_date: </label>
+  <input id="start_date" type="text" name="start_date">
+  <br>
+  <label for="end_date">end_date: </label>
+  <input id="end_date" type="text" name="end_date">
+  <br>
+  <label for="runtime">runtime: </label>
+  <input id="runtime" type="text" name="runtime">
+  <br>
+  <label for="min_price">min_price: </label>
+  <input id="min_price" type="text" name="min_price">
+  <br>
+  <label for="max_price">max_price: </label>
+  <input id="max_price" type="text" name="max_price">
+  <br>
+  {% if file_cnt %}
+  {% for i in "x"|rjust:file_cnt %}
+    <label for="image_{{ forloop.counter }}">image_{{ forloop.counter }}</label>
+    <input id="image_{{ forloop.counter }}" type="file" name="image_{{ forloop.counter }}">
+    <br>
+  {% endfor %}
+  {% endif %}
+  <input type="submit" value="SUBMIT">
+</form>

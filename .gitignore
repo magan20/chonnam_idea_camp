@@ -4,6 +4,10 @@
 ### vscode setting ###
 .vscode/
 
+### static file ###
+.static/
+img/
+
 ### Django ###
 *.log
 *.pot

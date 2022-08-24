@@ -4,11 +4,12 @@ from django.db import models
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
 
 
 class Show(models.Model):
     title = models.CharField(max_length=100)
+    link = models.CharField(max_length=200)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     poster_dir_path = models.CharField(max_length=200)
     region = models.CharField(max_length=100)
