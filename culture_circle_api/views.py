@@ -99,6 +99,7 @@ def create_a_show(request):
         runtime = int(request.POST["runtime"])
         min_price = int(request.POST["min_price"])
         max_price = int(request.POST["max_price"])
+        like = int(request.POST["like"])
 
         try:
             category = Category.objects.get(name=category_name)
@@ -115,6 +116,7 @@ def create_a_show(request):
             runtime=runtime,
             min_price=min_price,
             max_price=max_price,
+            like=like,
         )
 
         show_id = show.id

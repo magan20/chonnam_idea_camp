@@ -276,7 +276,7 @@
     <!-- navigator -->
     <div class="nav">
         <p class="menu">Menu</p>
-        <a href="#main"><img src="../../static/img/icon/main_on.png"><p>메인</p></a>
+        <a href="{% url 'app:index' %}"><img src="../../static/img/icon/main_on.png"><p>메인</p></a>
         <a href="#performance"><img src="../../static/img/icon/ticket_off.png"><p>공연</p></a>
         <!-- <div class="dropdown-container">
             <a href="#musical"><p>뮤지컬</p></a>
@@ -285,17 +285,21 @@
             <a href="#classic"><p>클래식/무용</p></a>
             <a href="#family"><p>아동/가족</p></a>
         </div> -->
-        <a href="#sports"><img src="../../static/img/icon/sport_off.png"><p>스포츠</p></a>
-        <a href="#art"><img src="../../static/img/icon/art_off.png"><p>미술</p></a>
-        <a href="#rent"><img src="../../static/img/icon/rent_off.png"><p>대관정보</p></a>
-        <a href="#artinfo"><img src="../../static/img/icon/info_off.png"><p>예술정보</p></a>
-        <a href="#local"><img src="../../static/img/icon/local_off.png"><p>대학로</p></a>
-        <a href="#annoucement"><img src="../../static/img/icon/announce_off.png"><p>공지사항</p></a>
-        <a href="#total"><img src="../../static/img/icon/total_off.png"><p>전체보기</p></a>
-        <hr>
-        <a href="#mypage"><img src="../../static/img/icon/myinfo_off.png"><p>마이페이지</p></a>
-        <a href="#bookcheck"><img src="../../static/img/icon/bookcheck_off.png"><p>예매확인/취소</p></a>
-        <a href="#help"><img src="../../static/img/icon/help_off.png"><p>고객센터</p></a>
+        {% if show.category.name == '미술' %}
+      <a href="#sports"><img src="../../static/img/icon/sport_on.png"><p>스포츠</p></a>
+      {% else %} 
+      <a href="#sports"><img src="../../static/img/icon/sport_off.png"><p>스포츠</p></a>
+      {% endif %}
+      <a href="#art"><img src="../../static/img/icon/art_off.png"><p>미술</p></a>
+      <a href="#rent"><img src="../../static/img/icon/rent_off.png"><p>대관정보</p></a>
+      <a href="#artinfo"><img src="../../static/img/icon/info_off.png"><p>예술정보</p></a>
+      <a href="{% url 'app:index' %}"><img src="../../static/img/icon/local_off.png"><p>대학로</p></a>
+      <a href="#annoucement"><img src="../../static/img/icon/announce_off.png"><p>공지사항</p></a>
+      <a href="#total"><img src="../../static/img/icon/total_off.png"><p>전체보기</p></a>
+      <hr>
+      <a href="#mypage"><img src="../../static/img/icon/myinfo_off.png"><p>마이페이지</p></a>
+      <a href="#bookcheck"><img src="../../static/img/icon/bookcheck_off.png"><p>예매확인/취소</p></a>
+      <a href="#help"><img src="../../static/img/icon/help_off.png"><p>고객센터</p></a>
     </div>
 
     <!-- local -->
@@ -305,56 +309,30 @@
             <img src="../../static/img/icon/local_on.png">
         </div>
         <div class="banner">
-            <a href="#detail"><img src="../../static/img/icon/performance.png"></a>
+            <a href="#detail"><img src="../../static/img/icon/local.jpeg"></a>
         </div>
         <div class="recommend">
             <div class="recommend-name">
                 <p>추천공연</p>
             </div>
             <div class="recommend-posters">
+                {% if recommend_show_list %} 
+                {% for show in recommend_show_list %} 
                 <div class="poster">
-                    <a href="#detail">
-                    <img src="../../static/img/icon/performance.png">
+                    <a href="{% url 'app:detail' show.id %}">
+                    <img src="../../{{ show.poster_dir_path }}image_1.jpg">
                     <div class="poster-description">
-                        <p class="title">탑건</p>
-                        <p class="date">2022.11.05 ~ 2022.11.05</p>
-                        <p class="place">광안리해수욕장</p>
+                        <p class="title">{{ show.title }}</p>
+                        <p class="date">{{ show.start_date }} ~ {{ show.end_date }}</p>
+                        <p class="place">{{ show.region }}</p>
                     </div>
                     </a>
                 </div>
-                <div class="poster">
-                    <a href="#detail">
-                    <img src="../../static/img/icon/performance.png">
-                    <div class="poster-description">
-                        <p class="title">탑건</p>
-                        <p class="date">2022.11.05 ~ 2022.11.05</p>
-                        <p class="place">광안리해수욕장</p>
-                    </div>
-                    </a>
-                </div>
-                <div class="poster">
-                    <a href="#detail">
-                    <img src="../../static/img/icon/performance.png">
-                    <div class="poster-description">
-                        <p class="title">탑건</p>
-                        <p class="date">2022.11.05 ~ 2022.11.05</p>
-                        <p class="place">광안리해수욕장</p>
-                    </div>
-                    </a>
-                </div>
-                <div class="poster">
-                    <a href="#detail">
-                    <img src="../../static/img/icon/performance.png">
-                    <div class="poster-description">
-                        <p class="title">탑건</p>
-                        <p class="date">2022.11.05 ~ 2022.11.05</p>
-                        <p class="place">광안리해수욕장</p>
-                    </div>
-                    </a>
-                </div>
+                {% endfor %} 
+                {% endif %}
             </div>
         </div>
-        <a href="#performance-register">
+        <a href="{% url 'app:register' %}">
             <div class="performance-register">
                 <div class="description-gather">
                     <p class="register-description">여러분의 공연을 알려주세요!</p>
@@ -366,50 +344,21 @@
         <div class="list-name">
             <p>공연목록</p>
         </div>
-        <a href="#detail">
+        {% if show_list %} 
+        {% for show in show_list %}
+        <a href="{% url 'app:detail' show.id %}">
         <div class="list-container content"> 
-            <img src="../../static/img/icon/performance.png">
+            <img src="../../{{ show.poster_dir_path}}image_1.jpg">
             <div class="list-description">
-                <p class="title">제17회 부산불꽃축제</p>
-                <p class="date">2022.11.05 ~ 2022.11.05</p>
-                <p class="place">광안리해수욕장</p>
+                <p class="title">{{ show.title }}</p>
+                <p class="date">{{ show.start_date }} ~ {{ show.end_date }}</p>
+                <p class="place">{{ show.region }}</p>
             </div>
         </div>
         <hr>
         </a>
-        <a href="#detail">
-            <div class="list-container content"> 
-                <img src="../../static/img/icon/performance.png">
-                <div class="list-description">
-                    <p class="title">제17회 부산불꽃축제</p>
-                    <p class="date">2022.11.05 ~ 2022.11.05</p>
-                    <p class="place">광안리해수욕장</p>
-                </div>
-            </div>
-            <hr>
-        </a>
-        <a href="#detail">
-            <div class="list-container content"> 
-                <img src="../../static/img/icon/performance.png">
-                <div class="list-description">
-                    <p class="title">제17회 부산불꽃축제</p>
-                    <p class="date">2022.11.05 ~ 2022.11.05</p>
-                    <p class="place">광안리해수욕장</p>
-                </div>
-            </div>
-            <hr>
-        </a>
-        <a href="#detail">
-            <div class="list-container content"> 
-                <img src="../../static/img/icon/performance.png">
-                <div class="list-description">
-                    <p class="title">제17회 부산불꽃축제</p>
-                    <p class="date">2022.11.05 ~ 2022.11.05</p>
-                    <p class="place">광안리해수욕장</p>
-                </div>
-            </div>
-            <hr>
-        </a>
+        {% endfor %}
+        {% endif %}
     </div>
 </body>
 </html>
