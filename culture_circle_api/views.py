@@ -1,3 +1,9 @@
+import urllib.request as req
+import os
+import time
+
+from pathlib import Path
+
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -82,7 +88,7 @@ def create_a_show(request):
             content["file_cnt"] = int(request.GET["file_cnt"]) or 0
         except:
             content["file_cnt"] = 0
-        return render(request, "api/create_show.html", content)
+        return render(request, "api/create_show_1.html", content)
     else:
         title = request.POST["title"]
         link = request.POST["link"]
@@ -117,10 +123,21 @@ def create_a_show(request):
         Show.objects.filter(id=show_id).update(poster_dir_path=poster_dir_path)
 
         cnt = 1
-        while f"image_{cnt}" in request.FILES:
-            image_file = request.FILES[f"image_{cnt}"]
-            fs = FileSystemStorage(location=poster_dir_path, base_url=poster_dir_path)
-            fs.save(f"image_{cnt}", image_file)
-            cnt += 1
+        # while f"image_{cnt}" in request.FILES:
+        #     image_file = request.FILES[f"image_{cnt}"]
+        #     fs = FileSystemStorage(location=poster_dir_path, base_url=poster_dir_path)
+        #     fs.save(f"image_{cnt}", image_file)
+        #     cnt += 1
+
+        image_link_list = request.POST["image_link_list"].split()
+
+        os.mkdir(os.getcwd() + f"/static/img/{show_id}/")
+        time.sleep(0.5)
+
+        if image_link_list:
+            for image_link in image_link_list:
+                print(image_link)
+                req.urlretrieve(image_link, os.path.join(os.getcwd(), "static/img", f"{show_id}/") + f"image_{cnt}.jpg")
+                cnt += 1
 
         return redirect("show_create")

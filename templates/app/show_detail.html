@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiko&display=swap" rel="stylesheet">
+    <title>Show Detail</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Amiko', sans-serif;
+            color: black;
+            text-decoration: none;
+        }
+
+        .nav {
+            padding-left: 2%;
+            background: #FFFFFF;
+            width: 15%;
+            position: fixed;
+        }
+
+        .menu {
+            padding: 80px 0px 0px 23px;
+            font-size: 13px;
+            color: #737373; 
+        }
+
+        .nav a p {
+            color: #737373; 
+            font-weight: bold;
+        }
+
+        .nav a {
+            display:flex;
+            align-items: center;
+            width: fit-content;
+            flex-wrap: wrap;
+        }
+
+        .nav a img {
+            width: 50px;
+        }
+
+        .nav hr {
+            border: 0px;
+            width: 65%;
+            height: 3px;
+            background: #F1F1F1;
+        }
+
+        .header {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            background: #FFFFFF;
+            top: 0;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: 75px;
+            margin-left: 20px;
+        }
+
+        .search {
+            margin-right: 15px;
+            padding: 0px 5px 0px 10px;
+            border-radius: 15px;
+            background-color: #F1F1F1;
+        }
+
+        .search input {
+            width: 450px;
+            height: 45px;
+            border: 0px;
+            outline: 0px;
+            background-color: transparent;
+        }
+
+        .search img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .alarm img {
+           width: 75px;
+           height: 75px;
+        }
+
+        .content-article {
+            background: #FFFFFF;
+            padding-left: 17%;
+            padding-right: 2%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .category-text {
+            display:flex;
+            align-items: center;
+            width: fit-content;
+            flex-wrap: wrap;
+            font-size: 30px;
+            padding-bottom: 4%;
+        }
+
+        .category-icon {
+            width: 60px;
+        }
+
+        .title-info-wrapper {
+            font-size: 30px;
+            padding-bottom: 30px;
+        }
+
+        .detail-content {
+            padding-top: 30px;
+            padding-bottom: 6%;
+            display: flex;
+        }
+
+        .poster-imgbox img {
+            padding-right: 2px;
+            width: 302px;
+        }
+
+        .social-icon-wrapper {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        .social-icon-wrapper img {
+            padding-right: 5px;
+            border-color: black;
+            width: 35px;
+        }
+
+        .info-wrapper-middle {
+          padding-right: 2px;
+          width: 400px;
+          flex-wrap: wrap;
+          flex-direction: column; /*수직 정렬*/
+          align-items: center;
+          justify-content: center;
+        }
+
+        .info-wrapper-middle-top {
+          padding-left: 33px;
+          padding-right: 33px;
+        }
+
+        .info-wrapper-middle-line {
+            margin-top: 5%;
+            margin-bottom: 5%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 332px;
+            border-color: #737373;
+            opacity: 0.1;
+        }
+        
+        .info-wrapper-middle-bottom {
+          padding-left: 33px;
+          padding-right: 33px;
+        }
+
+        .info-wrapper-right {
+          width: 300px;
+          margin-top: auto;
+          padding-top: 10px;
+          padding-bottom: 65px;
+          text-align: center;
+          font-size: 20pt;
+        }
+
+        .show-date-wrapper img {
+            padding-bottom: 100px;
+            width: 250px;
+        }
+
+        .ticker-redirect {
+          background-color: rgb(255, 98, 7);
+          padding-top: 5%;
+          padding-bottom: 5%;
+          width: 300px;
+        }
+
+
+        .show-info-wrapper {
+          padding-top: 2%;
+          padding-bottom: 2%;
+        }
+
+        .show-info-title {
+          padding-right: 10%;
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .show-info-description {
+          font-size: 16px;
+        }
+
+        .show-info-description-wrapper {
+          padding-top: 5%;
+          padding-bottom: 5%;
+        }
+
+        .show-info-sub-title {
+          padding-right: 5%;
+          font-size: 18px;
+        }
+
+        .show-img-info-title {
+          font-size: 20pt;
+          text-align: center;
+          padding-bottom: 4%;
+        }
+
+        .show-img-info-box {
+          text-align: center;
+          padding-bottom: 2%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo header">
+            <a href="{% url 'app:index' %}"><img src="../../static/img/icon/logo.png"></a>
+        </div>
+        <div class="search header">
+            <input type="search">
+            <img src="../../static/img/icon/search.png">
+        </div>
+        <div class="alarm header">
+            <img src="../../static/img/icon/alarm.png">
+        </div>
+    </header>
+    <div class="nav">
+      <p class="menu">Menu</p>
+      <a href="{% url 'app:index' %}"><img src="../../static/img/icon/main_off.png"><p>메인</p></a>
+      {% if show.category.name != '미술' %}
+      <a href="#performance"><img src="../../static/img/icon/ticket_on.png"><p>공연</p></a>
+      {% else %} 
+      <a href="#performance"><img src="../../static/img/icon/ticket_on.png"><p>공연</p></a>
+      {% endif %}
+      <!-- <div class="dropdown-container">
+          <a href="#musical"><p>뮤지컬</p></a>
+          <a href="#theater"><p>연극</p></a>
+          <a href="#concert"><p>콘서트</p></a>
+          <a href="#classic"><p>클래식/무용</p></a>
+          <a href="#family"><p>아동/가족</p></a>
+      </div> -->
+      {% if show.category.name == '미술' %}
+      <a href="#sports"><img src="../../static/img/icon/sport_on.png"><p>스포츠</p></a>
+      {% else %} 
+      <a href="#sports"><img src="../../static/img/icon/sport_off.png"><p>스포츠</p></a>
+      {% endif %}
+      <a href="#art"><img src="../../static/img/icon/art_off.png"><p>미술</p></a>
+      <a href="#rent"><img src="../../static/img/icon/rent_off.png"><p>대관정보</p></a>
+      <a href="#artinfo"><img src="../../static/img/icon/info_off.png"><p>예술정보</p></a>
+      <a href="{% url 'app:local' %}"><img src="../../static/img/icon/local_off.png"><p>대학로</p></a>
+      <a href="#annoucement"><img src="../../static/img/icon/announce_off.png"><p>공지사항</p></a>
+      <a href="#total"><img src="../../static/img/icon/total_off.png"><p>전체보기</p></a>
+      <hr>
+      <a href="#mypage"><img src="../../static/img/icon/myinfo_off.png"><p>마이페이지</p></a>
+      <a href="#bookcheck"><img src="../../static/img/icon/bookcheck_off.png"><p>예매확인/취소</p></a>
+      <a href="#help"><img src="../../static/img/icon/help_off.png"><p>고객센터</p></a>
+    </div>
+    <div class="content-article-wrapper">
+      <div class="content-article">
+          <article class="category-title-content">
+            <div class="category-info-wrapper">
+              <p class="category-info">
+                <span class="category-text">{{ show.category.name }}</a>
+                <span>
+                  {% if show.category.name == '미술' %} 
+                  <img src="../../static/img/icon/art_on.png" class="category-icon">
+                  {% elif show.category.name == '스포츠' %} 
+                  <img src="../../static/img/icon/sport_on.png" class="category-icon">
+                  {% else%} 
+                  <img src="../../static/img/icon/ticket_on.png" class="category-icon">
+                  {% endif %} 
+                </span>
+              </p>
+            </div>
+            <div class="title-info-wrapper">
+              <p class="big-title-info">{{ show.title }}</p>
+            </div>
+            <hr style="height: 2px; background-color: #737373; opacity: 0.7;">
+          </article>
+          <article class="detail-content">
+            <div class="info-wrapper-left">
+              <div class="detail-info-wrapper">
+                <div class="poster-imgbox">
+                  <img src="../../{{ show.poster_dir_path }}{{ poster_path }}">
+                </div>
+              </div>
+              <div class="social-icon-wrapper">
+                <span class="social-icon">
+                  <img src="../../static/img/icon/google.png">
+                </span>
+                <span class="social-icon">
+                  <img src="../../static/img/icon/kakao.png">
+                </span>
+              </div>
+            </div>
+            <div class="info-wrapper-middle">
+              <div class="info-wrapper-middle-top">
+                <div class="show-info1">
+                  <div class="show-info-wrapper">
+                    <span class="show-info-title">제목 </span>
+                    <span class="show-info-description">{{ show.title }}</span>
+                  </div>
+                  <div class="show-info-wrapper">
+                    <span class="show-info-title">장소 </span>
+                    <span class="show-info-description">{{ show.region }}</span>
+                  </div>
+                  <div class="show-info-wrapper">
+                    <span class="show-info-title">기간 </span>
+                    <span class="show-info-description">{{ show.start_date }} ~ {{ show.end_date }}</span>
+                  </div>
+                  <div class="show-info-wrapper">
+                    <span class="show-info-title">상영시간 </span>
+                    <span class="show-info-description">{{ show.runtime }} 분</span>
+                  </div>
+                </div>
+              </div>
+              <hr class="info-wrapper-middle-line">
+              <div class="info-wrapper-middle-bottom">
+                <div class="show-info2">
+                  <div class="show-info-wrapper">
+                    <div class="show-info-title">가격</div>
+                    <div class="show-info-description-wrapper">
+                      <div class="show-info-description-price">
+                        <span class="show-info-sub-title">최소 가격: </span>
+                        <span class="show-info-description">{{ show.min_price }} 원</span>
+                      </div>
+                      <div class="show-info-description-price">
+                        <span class="show-info-sub-title">최고 가격: </span>
+                        <span class="show-info-description">{{ show.max_price }} 원</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr style="height: 423px; opacity: 0.4;">
+            <div class="info-wrapper-right">
+              <div class="show-date-wrapper">
+                <img src="../../static/img/icon/calendar.png">
+              </div>
+              <p class="ticker-redirect"><a href="{{ show.link }}" >예매하기</a></p>
+            </div>
+          </article>
+          <article class="imgbox-content">
+            <div class="show-img-info-wrapper">
+              <div class="show-img-info-title">공연 정보</div>
+              {% if img_link_list %}
+              {% for image_link in img_link_list %} 
+              <div class="show-img-info-box">
+                <img src="../../{{ show.poster_dir_path }}{{ image_link }}" class="info-img">
+              </div>
+              {% endfor %} 
+              {% endif %} 
+            </div>
+          </article>
+      </div>
+    </div>
+</body>
+</html>

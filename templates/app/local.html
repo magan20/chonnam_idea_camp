@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiko&display=swap" rel="stylesheet">
+    <title>Local</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Amiko', sans-serif;
+            color: black;
+            text-decoration: none;
+        }
+
+        /* header */
+        .header {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            background: #FFFFFF;
+            top: 0;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: 75px;
+            margin-left: 20px;
+        }
+
+        .search {
+            margin-right: 15px;
+            padding: 0px 5px 0px 10px;
+            border-radius: 15px;
+            background-color: #F1F1F1;
+        }
+
+        .search input {
+            width: 450px;
+            height: 45px;
+            border: 0px;
+            outline: 0px;
+            background-color: transparent;
+        }
+
+        .search img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .alarm img {
+           width: 75px;
+           height: 75px;
+        }
+
+        /* navigator */
+        .nav {
+            padding-left: 2%;
+            background: #FFFFFF;
+            width: 15%;
+            position: fixed;
+        }
+
+        .menu {
+            padding: 80px 0px 0px 23px;
+            font-size: 13px;
+            color: #737373; 
+        }
+
+        .nav a p {
+            color: #737373; 
+            font-weight: bold;
+        }
+
+        .nav a {
+            display:flex;
+            align-items: center;
+            width: fit-content;
+            flex-wrap: wrap;
+        }
+
+        .nav a img {
+            width: 50px;
+        }
+
+        .nav hr {
+            border: 0px;
+            width: 65%;
+            height: 3px;
+            background: #F1F1F1;
+        }
+
+        /* local */
+        .local {
+            background: #FFFFFF;
+            padding-left: 17%;
+            padding-right: 2%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .content {
+            display: flex;
+        }
+
+        .local .represent {
+            align-items: center;
+        }
+
+        .local img {
+            width: 60px;
+        }
+
+        .local p {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        /* banner */
+        .banner {
+            width: 70%;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 250px;
+            border-radius: 20px;
+        }
+
+        /* recommend performance */
+        .recommend-name p {
+            padding: 30px 0px 0px 5px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        
+        .recommend-posters {
+            padding-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .poster {
+            margin-right: 12px;
+            width:fit-content;
+            border: 2px solid #F1F1F1;
+            border-radius: 10px;
+        }
+
+        .poster img {
+            width: 170px;
+            height: 190px;
+            border-radius: 10px 10px 0px 0px;
+        }
+
+        .poster-description {
+            padding: 0px 5px 3px 5px;
+        }
+
+        .poster-description .title {
+            font-size: 13px;
+        }
+
+        .poster-description .date {
+            font-size: 13px;
+            color: #999999;
+            font-weight: normal;
+        }
+        
+        .poster-description .place {
+            font-size: 13px;
+            color: #999999;
+            font-weight: normal;
+        }
+
+        /* register */
+        .performance-register {
+            margin-top: 30px;
+            width: 70%;
+            height: 130px;
+            background-color: #FA4902;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .description-gather {
+            padding-left: 50px;
+        }
+
+        .performance-register .register-description {
+            font-size: 28px;
+            font-weight: normal;
+            color: #FFFFFF;
+        }
+
+        .performance-register .register {
+            font-size: 35px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+
+        .performance-register img {
+            padding-left: 540px;
+            width: 65px;
+        }
+
+        /* performance list */
+        .list-name p {
+            padding: 30px 0px 0px 5px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .local hr {
+            width: 70%;
+            border: 0px;
+            height: 3px;
+            background: #F1F1F1;
+        }
+
+        .list-container {
+            width: 70%;
+            padding: 10px 0px 10px 0px;
+        }
+
+        .list-container img {
+            margin-right: 30px;
+            width: 130px;
+            height: 180px;
+            border-radius: 10px;
+        }
+
+        .list-description .title {
+            padding: 25px 0px 60px 0px;
+            font-size: 23px;
+            font-weight:500px;
+            color: #FA4902;
+        }
+
+        .list-description .date {
+            font-size: 16px;
+            font-weight:300px;
+            color: #737373;
+            letter-spacing: 1px;
+        }
+
+        .list-description .place {
+            font-size: 16px;
+            font-weight:300px;
+            color: #737373;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="logo header">
+            <a href="#header"><img src="../../static/img/icon/logo.png"></a>
+        </div>
+        <div class="search header">
+            <input type="search">
+            <img src="../../static/img/icon/search.png">
+        </div>
+        <div class="alarm header">
+            <img src="../../static/img/icon/alarm.png">
+        </div>
+    </header>
+
+    <!-- navigator -->
+    <div class="nav">
+        <p class="menu">Menu</p>
+        <a href="#main"><img src="../../static/img/icon/main_off.png"><p>메인</p></a>
+        <a href="#performance"><img src="../../static/img/icon/ticket_off.png"><p>공연</p></a>
+        <!-- <div class="dropdown-container">
+            <a href="#musical"><p>뮤지컬</p></a>
+            <a href="#theater"><p>연극</p></a>
+            <a href="#concert"><p>콘서트</p></a>
+            <a href="#classic"><p>클래식/무용</p></a>
+            <a href="#family"><p>아동/가족</p></a>
+        </div> -->
+        <a href="#sports"><img src="../../static/img/icon/sport_off.png"><p>스포츠</p></a>
+        <a href="#art"><img src="../../static/img/icon/art_off.png"><p>미술</p></a>
+        <a href="#rent"><img src="../../static/img/icon/rent_off.png"><p>대관정보</p></a>
+        <a href="#artinfo"><img src="../../static/img/icon/info_off.png"><p>예술정보</p></a>
+        <a href="#local"><img src="../../static/img/icon/local_off.png"><p>대학로</p></a>
+        <a href="#annoucement"><img src="../../static/img/icon/announce_off.png"><p>공지사항</p></a>
+        <a href="#total"><img src="../../static/img/icon/total_off.png"><p>전체보기</p></a>
+        <hr>
+        <a href="#mypage"><img src="../../static/img/icon/myinfo_off.png"><p>마이페이지</p></a>
+        <a href="#bookcheck"><img src="../../static/img/icon/bookcheck_off.png"><p>예매확인/취소</p></a>
+        <a href="#help"><img src="../../static/img/icon/help_off.png"><p>고객센터</p></a>
+    </div>
+
+    <!-- local -->
+    <div class="local">
+        <div class="represent content">
+            <p>대학로</p>
+            <img src="../../static/img/icon/local_on.png">
+        </div>
+        <div class="banner">
+            <a href="#detail"><img src="../../static/img/icon/performance.png"></a>
+        </div>
+        <div class="recommend">
+            <div class="recommend-name">
+                <p>추천공연</p>
+            </div>
+            <div class="recommend-posters">
+                <div class="poster">
+                    <a href="#detail">
+                    <img src="../../static/img/icon/performance.png">
+                    <div class="poster-description">
+                        <p class="title">탑건</p>
+                        <p class="date">2022.11.05 ~ 2022.11.05</p>
+                        <p class="place">광안리해수욕장</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="poster">
+                    <a href="#detail">
+                    <img src="../../static/img/icon/performance.png">
+                    <div class="poster-description">
+                        <p class="title">탑건</p>
+                        <p class="date">2022.11.05 ~ 2022.11.05</p>
+                        <p class="place">광안리해수욕장</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="poster">
+                    <a href="#detail">
+                    <img src="../../static/img/icon/performance.png">
+                    <div class="poster-description">
+                        <p class="title">탑건</p>
+                        <p class="date">2022.11.05 ~ 2022.11.05</p>
+                        <p class="place">광안리해수욕장</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="poster">
+                    <a href="#detail">
+                    <img src="../../static/img/icon/performance.png">
+                    <div class="poster-description">
+                        <p class="title">탑건</p>
+                        <p class="date">2022.11.05 ~ 2022.11.05</p>
+                        <p class="place">광안리해수욕장</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a href="#performance-register">
+            <div class="performance-register">
+                <div class="description-gather">
+                    <p class="register-description">여러분의 공연을 알려주세요!</p>
+                    <p class="register">공연 등록하기</p>
+                </div>
+                <img src="../../static/img/icon/register.png">
+            </div>
+        </a>
+        <div class="list-name">
+            <p>공연목록</p>
+        </div>
+        <a href="#detail">
+        <div class="list-container content"> 
+            <img src="../../static/img/icon/performance.png">
+            <div class="list-description">
+                <p class="title">제17회 부산불꽃축제</p>
+                <p class="date">2022.11.05 ~ 2022.11.05</p>
+                <p class="place">광안리해수욕장</p>
+            </div>
+        </div>
+        <hr>
+        </a>
+        <a href="#detail">
+            <div class="list-container content"> 
+                <img src="../../static/img/icon/performance.png">
+                <div class="list-description">
+                    <p class="title">제17회 부산불꽃축제</p>
+                    <p class="date">2022.11.05 ~ 2022.11.05</p>
+                    <p class="place">광안리해수욕장</p>
+                </div>
+            </div>
+            <hr>
+        </a>
+        <a href="#detail">
+            <div class="list-container content"> 
+                <img src="../../static/img/icon/performance.png">
+                <div class="list-description">
+                    <p class="title">제17회 부산불꽃축제</p>
+                    <p class="date">2022.11.05 ~ 2022.11.05</p>
+                    <p class="place">광안리해수욕장</p>
+                </div>
+            </div>
+            <hr>
+        </a>
+        <a href="#detail">
+            <div class="list-container content"> 
+                <img src="../../static/img/icon/performance.png">
+                <div class="list-description">
+                    <p class="title">제17회 부산불꽃축제</p>
+                    <p class="date">2022.11.05 ~ 2022.11.05</p>
+                    <p class="place">광안리해수욕장</p>
+                </div>
+            </div>
+            <hr>
+        </a>
+    </div>
+</body>
+</html>
