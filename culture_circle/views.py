@@ -27,11 +27,11 @@ def detail(request, show_id):
 
 
 def register(request):
-    pass
+    return render(request, "app/show_register_page.html")
 
 
 def show_list(request):
-    pass
+    return render(request, "app/info.html")
 
 
 def local(request):
