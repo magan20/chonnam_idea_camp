@@ -1,0 +1,276 @@
+<!DOCTYPE html><html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiko&display=swap" rel="stylesheet">
+    <title>Info</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Amiko', sans-serif;
+            color: black;
+            text-decoration: none;
+        }
+
+        /* header */
+        .header {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            background: #FFFFFF;
+            top: 0;
+        }
+        
+        .logo img {
+            width: 150px;
+            height: 75px;
+            margin-left: 20px;
+        }
+
+        .search {
+            margin-right: 15px;
+            padding: 0px 5px 0px 10px;
+            border-radius: 15px;
+            background-color: #F1F1F1;
+        }
+
+        .search input {
+            width: 450px;
+            height: 45px;
+            border: 0px;
+            outline: 0px;
+            background-color: transparent;
+        }
+
+        .search img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .alarm img {
+           width: 75px;
+           height: 75px;
+        }
+
+        /* navigator */
+        .nav {
+            padding-left: 2%;
+            background: #FFFFFF;
+            width: 15%;
+            position: fixed;
+        }
+
+        .menu {
+            padding: 80px 0px 0px 23px;
+            font-size: 13px;
+            color: #737373; 
+        }
+
+        .nav a p {
+            color: #737373; 
+            font-weight: bold;
+        }
+
+        .nav a {
+            display:flex;
+            align-items: center;
+            width: fit-content;
+            flex-wrap: wrap;
+        }
+
+        .nav a img {
+            width: 50px;
+        }
+
+        .nav hr {
+            border: 0px;
+            width: 65%;
+            height: 3px;
+            background: #F1F1F1;
+        }
+
+        /* register_page */
+
+        .show-register-wrapper {
+            background: #FFFFFF;
+            padding-left: 17%;
+            padding-right: 2%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .represent {
+          align-items: center;
+        }
+
+        .represent p {
+          font-size: 30px;
+          font-weight: bold;
+        }
+
+        .regist-container-wrapper {
+          padding-top: 50px;
+          padding-bottom: 10px;
+        }
+
+        .content {
+          display: flex;
+        }
+
+        .essential-input-mark-text p {
+          text-align: right;
+          color: red;
+        }
+
+        .element-list-container {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          border-style: solid;
+          border-width: 1px 1px 1px 1px;
+        }
+
+        .element-key {
+          padding-left: 20px;
+          border-right-style: solid;
+          width: 14%;
+          border-color: #808080;
+        }
+
+        .element-value {
+          margin-left: auto;
+          margin-right: auto;
+          height: 20px;
+          width: 50%;
+        }
+
+        .element-top {
+          border-radius: 8px 8px 0px 0px;
+        }
+
+        .element-bottom {
+          border-radius: 0px 0px 8px 8px;
+        }
+
+        input {
+          border-radius: 8px 8px 8px 8px;
+        }
+
+        textarea {
+          border-radius: 8px 8px 8px 8px;
+          height: 70px !important;
+        }
+
+        .subject-button {
+          padding-left: 20px;
+          padding-right: 20px;
+          margin-top: 20px;
+          height: 20px;
+          border-style: solid;
+          border-color: rgb(216, 83, 83);
+          background-color: white;
+        }
+
+        .button-container {
+          text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="logo header">
+            <a href="#header"><img src="../../static/img/icon/logo.png"></a>
+        </div>
+        <div class="search header">
+            <input type="search">
+            <img src="../../static/img/icon/search.png">
+        </div>
+        <div class="alarm header">
+            <img src="../../static/img/icon/alarm.png">
+        </div>
+    </header>
+
+    <!-- navigator -->
+    <div class="nav">
+        <p class="menu">Menu</p>
+        <a href="#main"><img src="../../static/img/icon/main_off.png"><p>메인</p></a>
+        <a href="#performance"><img src="../../static/img/icon/ticket_off.png"><p>공연</p></a>
+        <!-- <div class="dropdown-container">
+            <a href="#musical"><p>뮤지컬</p></a>
+            <a href="#theater"><p>연극</p></a>
+            <a href="#concert"><p>콘서트</p></a>
+            <a href="#classic"><p>클래식/무용</p></a>
+            <a href="#family"><p>아동/가족</p></a>
+        </div> -->
+        <a href="#sports"><img src="../../static/img/icon/sport_off.png"><p>스포츠</p></a>
+        <a href="#art"><img src="../../static/img/icon/art_off.png"><p>미술</p></a>
+        <a href="#rent"><img src="../../static/img/icon/rent_off.png"><p>대관정보</p></a>
+        <a href="#artinfo"><img src="../../static/img/icon/info_off.png"><p>예술정보</p></a>
+        <a href="#local"><img src="../../static/img/icon/local_off.png"><p>대학로</p></a>
+        <a href="#annoucement"><img src="../../static/img/icon/announce_off.png"><p>공지사항</p></a>
+        <a href="#total"><img src="../../static/img/icon/total_off.png"><p>전체보기</p></a>
+        <hr>
+        <a href="#mypage"><img src="../../static/img/icon/myinfo_off.png"><p>마이페이지</p></a>
+        <a href="#bookcheck"><img src="../../static/img/icon/bookcheck_off.png"><p>예매확인/취소</p></a>
+        <a href="#help"><img src="../../static/img/icon/help_off.png"><p>고객센터</p></a>
+    </div>
+
+    <!-- register page -->
+    <div class="show-register-wrapper">
+      <div class="represent content">
+        <p>공연등록</p>
+      </div>
+      <div class="regist-container-wrapper">
+        <div class="essential-input-mark-text">
+          <p>* 필수 입력 사항</p>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+          <div class="element-list-container-wrapper">
+            <div class="element-list-container content element-top">
+              <label for="title" class="element-key essential-element-key">*공연 이름</label>
+              <input id="title" class="element-value essential-element-value" type="text" name="title">
+            </div>
+            <div class="element-list-container content">
+              <label for="category" class="element-key essential-element-key">*공연 장르</label>
+              <input id="category" class="element-value essential-element-value" type="text" name="category">
+            </div>
+            <div class="element-list-container content">
+              <label for="region" class="element-key essential-element-key">*공연장 이름</label>
+              <input id="region" class="element-value essential-element-value" type="text" name="region">
+            </div>
+            <div class="element-list-container content">
+              <label for="date" class="element-key essential-element-key">*공연 일시</label>
+              <div name="date" class="element-value essential-element-value">
+                  <label for="start_date">시작 날짜</label>
+                  <input id="start_date" type="date" name="start_date">
+                  <label for="end_date">종료 날짜</label>
+                  <input id="end_date" type="date" name="end_date">
+              </div>
+            </div>
+            <div class="element-list-container content">
+              <label for="runtime" class="element-key essential-element-key">*공연 시간</label>
+              <input id="runtime" class="element-value essential-element-value" type="number" name="runtime">
+            </div>
+            <div class="element-list-container content">
+              <label for="price" class="element-key">가격</label>
+              <input id="price" class="element-value" type="number" name="price">
+            </div>
+            <div class="element-list-container content element-bottom">
+              <label for="description" class="element-key">추가 설명</label>
+              <textarea id="description" class="element-value" name="description"></textarea>
+            </div>
+          </div>
+          <div class="button-container">
+            <input class="subject-button" type="button" value="신청">
+          </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>
