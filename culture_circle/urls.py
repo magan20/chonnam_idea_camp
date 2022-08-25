@@ -9,5 +9,5 @@ urlpatterns = [
     path("shows/", views.show_list, name="list"),
     path("show/", views.register, name="register"),
     path("show/<int:show_id>", views.detail, name="detail"),
-    path("local/", views.local, name="local"),
+    path("article/", views.local, name="info"),
 ]

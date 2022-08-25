@@ -184,22 +184,22 @@
 <body>
     <!-- header -->
     <header class="header">
-        <div class="logo header">
-            <a href="#header"><img src="../../static/img/icon/logo.png"></a>
-        </div>
-        <div class="search header">
-            <input type="search">
-            <img src="../../static/img/icon/search.png">
-        </div>
-        <div class="alarm header">
-            <img src="../../static/img/icon/alarm.png">
-        </div>
-    </header>
+      <div class="logo header">
+          <a href="{% url 'app:index' %}"><img src="../../static/img/icon/logo.png"></a>
+      </div>
+      <div class="search header">
+          <input type="search">
+          <img src="../../static/img/icon/search.png">
+      </div>
+      <div class="alarm header">
+          <img src="../../static/img/icon/alarm.png">
+      </div>
+  </header>
 
     <!-- navigator -->
     <div class="nav">
         <p class="menu">Menu</p>
-        <a href="#main"><img src="../../static/img/icon/main_off.png"><p>메인</p></a>
+        <a href="{% url 'app:index' %}"><img src="../../static/img/icon/main_off.png"><p>메인</p></a>
         <a href="#performance"><img src="../../static/img/icon/ticket_off.png"><p>공연</p></a>
         <!-- <div class="dropdown-container">
             <a href="#musical"><p>뮤지컬</p></a>
@@ -211,8 +211,8 @@
         <a href="#sports"><img src="../../static/img/icon/sport_off.png"><p>스포츠</p></a>
         <a href="#art"><img src="../../static/img/icon/art_off.png"><p>미술</p></a>
         <a href="#rent"><img src="../../static/img/icon/rent_off.png"><p>대관정보</p></a>
-        <a href="#artinfo"><img src="../../static/img/icon/info_off.png"><p>예술정보</p></a>
-        <a href="#local"><img src="../../static/img/icon/local_off.png"><p>대학로</p></a>
+        <a href="#artinfo"><img src="../../static/img/icon/info_on.png"><p>예술정보</p></a>
+        <a href="#local"><img src="../../static/img/icon/local_on.png"><p>대학로</p></a>
         <a href="#annoucement"><img src="../../static/img/icon/announce_off.png"><p>공지사항</p></a>
         <a href="#total"><img src="../../static/img/icon/total_off.png"><p>전체보기</p></a>
         <hr>
@@ -231,6 +231,7 @@
           <p>* 필수 입력 사항</p>
         </div>
         <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
           <div class="element-list-container-wrapper">
             <div class="element-list-container content element-top">
               <label for="title" class="element-key essential-element-key">*공연 이름</label>
@@ -267,7 +268,7 @@
             </div>
           </div>
           <div class="button-container">
-            <input class="subject-button" type="button" value="신청">
+            <input class="subject-button" type="submit" value="신청">
           </div>
         </form>
       </div>
